@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_XSLT" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <XSLTDESC>ZJ_YAH_FLICKRING</XSLTDESC>
+    <LANGU>E</LANGU>
+    <DESCRIPT>ZJ_YAH_FLICKRING</DESCRIPT>
+   </ATTRIBUTES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

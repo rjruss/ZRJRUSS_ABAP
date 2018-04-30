@@ -1,0 +1,259 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2">
+  <tt:root name="ROOT"/>
+  <tt:root name="ROOT2"/>
+  <tt:root name="ROOT4"/>
+
+  <tt:root name="ROOT6"/>
+  <tt:root name="P1"/>
+  <tt:root name="P2"/>
+  <tt:root name="P3"/>
+
+  <tt:template>
+    <Document>
+      <name>SAP related World Tour - by Robert Russell</name>
+      <open>1</open>
+
+
+      <gx:Tour>
+        <name>SAP World Tour</name>
+        <gx:Playlist>
+          <gx:SoundCue id="1">
+            <href>
+              <tt:value ref="P1"/>
+            </href>
+          </gx:SoundCue>
+          <tt:s-cond check="not-initial(P3)">
+          <gx:SoundCue id="2">
+            <href>
+              <tt:value ref="P2"/>
+            </href>
+            <gx:delayedStart>
+              <tt:value ref="P3"/>
+            </gx:delayedStart>
+          </gx:SoundCue>
+            </tt:s-cond>
+
+
+          <tt:loop name="line" ref=".ROOT">
+
+
+            <gx:FlyTo>
+              <gx:duration>3</gx:duration>
+              <LookAt>
+                <longitude>
+                  <tt:value ref="$line.lon"/>
+                </longitude>
+                <latitude>
+                  <tt:value ref="$line.lat"/>
+                </latitude>
+                <altitude>
+                  <tt:value ref="$line.alt"/>
+                </altitude>
+                <heading>-20</heading>
+                <tilt>10</tilt>
+                <range>1995500</range>
+                <altitudeMode>relativeToGround</altitudeMode>
+              </LookAt>
+            </gx:FlyTo>
+
+            <gx:Wait>
+              <gx:duration>1.0</gx:duration>
+            </gx:Wait>
+
+
+            <gx:FlyTo>
+              <gx:duration>3</gx:duration>
+              <LookAt>
+                <longitude>
+                  <tt:value ref="$line.lon"/>
+                </longitude>
+                <latitude>
+                  <tt:value ref="$line.lat"/>
+                </latitude>
+                <altitude>
+                  <tt:value ref="$line.alt"/>
+                </altitude>
+                <heading>-25</heading>
+                <tilt>
+                  <tt:value ref="$line.tilt"/>
+                </tilt>
+                <range>
+                  <tt:value ref="$line.range"/>
+                </range>
+                <altitudeMode>relativeToGround</altitudeMode>
+              </LookAt>
+            </gx:FlyTo>
+
+            <gx:AnimatedUpdate>
+              <Update>
+                <targetHref/>
+                <Change>
+
+                  <Placemark>
+                    <tt:attribute name="targetId" value-ref="$line.placemarker"/>
+
+
+                    <gx:balloonVisibility>1</gx:balloonVisibility>
+                  </Placemark>
+                </Change>
+              </Update>
+            </gx:AnimatedUpdate>
+
+            <gx:Wait>
+              <gx:duration>
+                <tt:value ref="$line.delay"/>
+              </gx:duration>
+            </gx:Wait>
+
+            <gx:AnimatedUpdate>
+              <Update>
+                <targetHref/>
+                <Change>
+
+                  <Placemark>
+                    <tt:attribute name="targetId" value-ref="$line.placemarker"/>
+
+
+
+                    <gx:balloonVisibility>0</gx:balloonVisibility>
+                  </Placemark>
+                </Change>
+              </Update>
+            </gx:AnimatedUpdate>
+
+
+
+          </tt:loop>
+
+
+        </gx:Playlist>
+      </gx:Tour>
+
+      <Style id="wiki">
+        <IconStyle>
+          <Icon>
+            <href>http://maps.google.com/mapfiles/kml/shapes/info.png</href>
+          </Icon>
+        </IconStyle>
+        <LineStyle>
+          <width>2</width>
+        </LineStyle>
+      </Style>
+
+      <Style id="flick">
+        <IconStyle>
+          <Icon>
+            <href>http://maps.google.com/mapfiles/kml/shapes/camera.png</href>
+          </Icon>
+        </IconStyle>
+        <LineStyle>
+          <width>2</width>
+        </LineStyle>
+      </Style>
+
+      <Style id="conf">
+        <IconStyle>
+          <Icon>
+            <href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+          </Icon>
+        </IconStyle>
+        <LineStyle>
+          <width>2</width>
+        </LineStyle>
+      </Style>
+
+      <Style id="georss">
+        <IconStyle>
+          <Icon>
+            <href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
+          </Icon>
+        </IconStyle>
+        <LineStyle>
+          <width>2</width>
+        </LineStyle>
+      </Style>
+
+
+
+      <tt:loop name="line" ref=".ROOT2">
+        <Placemark>
+          <tt:attribute name="id" value-ref="$line.placemarker"/>
+          <name>
+            <tt:value ref="$line.name"/>
+          </name>
+          <description>
+            <tt:value ref="$line.desc"/>
+          </description>
+          <Point>
+            <gx:altitudeMode>relativeToGround</gx:altitudeMode>
+            <coordinates>
+              <tt:value ref="$line.lon"/>
+              <tt:text>,</tt:text>
+              <tt:value ref="$line.lat"/>
+              <tt:text>,</tt:text>
+              <tt:value ref="$line.alt"/>
+            </coordinates>
+          </Point>
+        </Placemark>
+      </tt:loop>
+
+      <tt:loop name="line" ref=".ROOT4">
+        <Placemark>
+          <name>
+            <tt:value ref="$line.title"/>
+          </name>
+
+          <description>
+            <tt:value ref="$line.f_html"/>
+          </description>
+          <styleUrl>#flick</styleUrl>
+          <gx:balloonVisibility>1</gx:balloonVisibility>
+          <Point>
+            <gx:altitudeMode>relativeToGround</gx:altitudeMode>
+            <coordinates>
+              <tt:value ref="$line.lng"/>
+              <tt:text>,</tt:text>
+              <tt:value ref="$line.lat"/>
+              <tt:text>,0</tt:text>
+            </coordinates>
+          </Point>
+        </Placemark>
+      </tt:loop>
+
+
+
+
+      <tt:loop name="line" ref=".ROOT6">
+        <Placemark>
+          <name>
+            <tt:value ref="$line.title"/>
+          </name>
+
+          <description>
+            <tt:value ref="$line.link"/>
+            <tt:text> - </tt:text>
+            <tt:value ref="$line.description"/>
+          </description>
+
+          <styleUrl>#georss</styleUrl>
+          <gx:balloonVisibility>1</gx:balloonVisibility>
+          <Point>
+            <gx:altitudeMode>relativeToGround</gx:altitudeMode>
+            <coordinates>
+              <tt:value ref="$line.lng"/>
+              <tt:text>,</tt:text>
+              <tt:value ref="$line.lat"/>
+              <tt:text>,0</tt:text>
+            </coordinates>
+          </Point>
+        </Placemark>
+      </tt:loop>
+
+
+
+
+
+    </Document>
+  </tt:template>
+</tt:transform>

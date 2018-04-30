@@ -1,0 +1,52 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns:f="http://www.flickr.com/services/api/">
+  <tt:root name="PLAT"/>
+  <tt:root name="PLNG"/>
+
+  <tt:template>
+    <rsp>
+
+      <photo>
+
+        <location>
+
+          <tt:attribute name="latitude" value-ref="PLAT"/>
+          <tt:attribute name="longitude" value-ref="PLNG"/>
+
+          <tt:d-cond>
+            <neighbourhood>
+              <tt:skip/>
+            </neighbourhood>
+          </tt:d-cond>
+
+          <tt:d-cond>
+            <locality>
+              <tt:skip/>
+            </locality>
+          </tt:d-cond>
+
+          <tt:d-cond>
+            <county>
+              <tt:skip/>
+            </county>
+          </tt:d-cond>
+
+          <tt:d-cond>
+            <region>
+              <tt:skip/>
+            </region>
+          </tt:d-cond>
+
+          <tt:d-cond>
+            <country>
+              <tt:skip/>
+            </country>
+          </tt:d-cond>
+
+        </location>
+
+      </photo>
+
+    </rsp>
+  </tt:template>
+</tt:transform>

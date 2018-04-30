@@ -1,0 +1,57 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates">
+  <tt:root name="P1"/>
+
+
+  <tt:template>
+
+    <geonames>
+    <tt:cond>
+    <status>
+    <tt:skip/>
+    </status>
+    </tt:cond>
+
+    <tt:cond>
+      <geoname>
+        <toponymName>
+          <tt:skip/>
+        </toponymName>
+        <name>
+          <tt:skip/>
+        </name>
+        <lat>
+          <tt:skip/>
+        </lat>
+        <lng>
+          <tt:skip/>
+        </lng>
+        <geonameId>
+          <tt:skip/>
+        </geonameId>
+
+        <countryCode>
+          <tt:value ref="P1"/>
+        </countryCode>
+
+        <countryName>
+          <tt:skip/>
+        </countryName>
+        <fcl>
+          <tt:skip/>
+        </fcl>
+        <fcode>
+          <tt:skip/>
+        </fcode>
+        <distance>
+          <tt:skip/>
+        </distance>
+      </geoname>
+
+       </tt:cond>
+
+    </geonames>
+
+
+  </tt:template>
+</tt:transform>

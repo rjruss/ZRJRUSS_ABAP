@@ -1,0 +1,87 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns="http://www.opengis.net/kml/2.2">
+  <tt:root name="ROOT"/>
+
+
+  <tt:template>
+    <kml>
+      <tt:deserialize>
+
+        <Document>
+          <name>
+            <tt:skip/>
+          </name>
+
+          <description>
+            <tt:skip/>
+          </description>
+
+
+
+            <Style>
+              <tt:skip/>
+            </Style>
+            <Style>
+              <tt:skip/>
+            </Style>
+            <StyleMap>
+              <tt:skip/>
+            </StyleMap>
+
+               <Folder>
+<name><tt:skip/></name>
+
+
+
+
+          <tt:loop name="line" ref=".ROOT">
+            <Placemark>
+
+              <tt:d-cond>
+                <name>
+                  <tt:value ref="$line.name"/>
+                </name>
+              </tt:d-cond>
+
+
+              <tt:d-cond>
+                <description>
+                  <tt:value ref="$line.desc"/>
+                </description>
+              </tt:d-cond>
+
+
+
+              <tt:d-cond>
+                <styleUrl>
+                  <tt:skip/>
+
+                </styleUrl>
+              </tt:d-cond>
+
+              <tt:d-cond>
+                <ExtendedData>
+                  <tt:skip/>
+
+                </ExtendedData>
+              </tt:d-cond>
+
+              <tt:d-cond>
+                <Point>
+                  <coordinates>
+                    <tt:value ref="$line.coord"/>
+                  </coordinates>
+
+                </Point>
+              </tt:d-cond>
+
+
+            </Placemark>
+
+          </tt:loop>
+   </Folder>
+        </Document>
+      </tt:deserialize>
+    </kml>
+  </tt:template>
+</tt:transform>

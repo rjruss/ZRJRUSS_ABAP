@@ -1,0 +1,89 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:gml=
+"http://www.opengis.net/gml" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:georss="http://www.georss.org/georss" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:media="http://search.yahoo.com/mrss" version="2.0">
+  <tt:root name="ROOT"/>
+  <tt:root name="E1"/>
+  <tt:template>
+
+
+
+      <rss>
+        <channel>
+          <title>
+            <tt:skip/>
+          </title>
+          <link>
+            <tt:skip/>
+          </link>
+          <description>
+            <tt:skip/>
+          </description>
+          <language>
+            <tt:skip/>
+          </language>
+          <pubDate>
+            <tt:skip/>
+          </pubDate>
+          <dc:date>
+            <tt:skip/>
+          </dc:date>
+          <dc:language>
+            <tt:skip/>
+          </dc:language>
+          <tt:loop name="line" ref=".ROOT">
+            <item>
+
+                <title>
+                  <tt:value ref="$line.title"/>
+                </title>
+
+
+                <link>
+                  <tt:value ref="$line.link"/>
+                </link>
+
+
+                <description>
+                  <tt:value ref="$line.description"/>
+                </description>
+
+
+
+<tt:skip name="category" count="*" />
+
+                <pubDate>
+                  <tt:skip/>
+                </pubDate>
+
+
+                <guid>
+                  <tt:skip/>
+                </guid>
+
+
+                <dc:creator>
+                  <tt:skip/>
+                </dc:creator>
+
+
+                <dc:date>
+                  <tt:skip/>
+                </dc:date>
+
+
+                <content:encoded>
+                  <tt:skip/>
+                </content:encoded>
+
+
+    <tt:d-cond><geo:lat><tt:value ref="$line.lat"/></geo:lat></tt:d-cond>
+
+    <tt:d-cond><geo:long><tt:value ref="$line.lng"/></geo:long></tt:d-cond>
+
+            </item>
+          </tt:loop>
+        </channel>
+      </rss>
+
+  </tt:template>
+</tt:transform>

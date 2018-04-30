@@ -1,0 +1,21 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns:f="http://www.flickr.com/services/api/">
+  <tt:root name="ROOT"/>
+  <tt:template>
+    <rsp>
+      <photos>
+      <tt:loop name="line" ref=".ROOT">
+        <photo>
+           <tt:attribute name="owner" value-ref="$line.owner" />
+        <tt:attribute name="id" value-ref="$line.id" />
+         <tt:attribute name="secret" value-ref="$line.secret" />
+        <tt:attribute name="title" value-ref="$line.title" />
+        <tt:attribute name="farm" value-ref="$line.farm" />
+           <tt:attribute name="server" value-ref="$line.server" />
+
+            </photo>
+      </tt:loop>
+      </photos>
+    </rsp>
+  </tt:template>
+</tt:transform>
